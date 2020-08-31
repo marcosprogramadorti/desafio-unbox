@@ -1,0 +1,6 @@
+/*CREATE TABLE pessoa (
+    ID_PESSOA  BIGINT  		NOT NULL,
+    NOME 	   VARCHAR(128) NOT NULL,
+    CPF        VARCHAR(11)  NOT NULL,
+    PRIMARY KEY (ID_PESSOA)
+);*/

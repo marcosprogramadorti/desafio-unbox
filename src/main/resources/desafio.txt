@@ -1,0 +1,43 @@
+2.1. Explique com suas palavras, qual o conceito SOA. 
+
+•	Arquitetura Orientada a Serviços (SOA) é um procedimento de arquitetura que proporciona sustentação à orientação a serviços;
+•	A orientação a serviços é um modo de pensar em termos de infraestruturas e desenvolvimento baseado em serviços e os soluções dos serviços;
+•	Um serviço: É uma concepção lógica de uma operação de negócios repetível que tem um resultado tipificado (por exemplo, verificar o saldo do cliente, fornecer dados meteorológicos, consolidar relatórios, emitir segunda via de documentos );
+•	É independente e pode ser mesclado com outros serviços;
+•	É uma “caixa preta” para os consumidores do serviço.
+
+2.2. Diferencie o SOAP do REST, se possível, dê exemplos de sua utilização
+SOAP é um protocolo de transferência de mensagens em formato XML para utilização em ambientes distribuídos. O modelo SOAP atua como uma tipo de framework que consente a interoperabilidade entre diferentes plataformas com mensagens personalizadas.
+
+empregando este arquétipo em Web Services, WSDL que é  em geral empregado para descrever a estrutura de mensagens SOAP e prováveis ações em um terminal.
+
+benefícios diante disso é que várias linguagens e ferramentas são capazes ler e gerar mensagens prontamente. Várias linguagens de programação permitem a criação de objetos de domínio, Stubs e Skeletons a partir da definição de WSDL, permitindo a comunicabilidade remota via RPC através de chamadas a métodos remotos, inclusive com argumentos complexos, como se fossem chamadas locais.
+
+A dificuldade com esse padrão é que ele acrescenta uma exagero considerável, tanto porque está em XML quanto porque adiciona muitas tags de meta-informação. além de que, serializar e desserializar mensagens pode desperdiçar muito tempo.
+
+
+REST é outro protocolo de comunicação, baseado no protocolo de hipermídia HTTP. contudo, não impõe restrições as configurações da mensagem, apenas aos comportamento dos componentes envolvidos.
+
+A vantagem do protocolo REST é sua flexibilidade. O desenvolvedor pode escolher o formato mais adequado para mensagens do sistema de acordo com sua necessidade específica. Os formatos mais comuns são JSON, XML e texto simples, mas em teoria qualquer formato pode ser usado.
+Geralmente SOAP  é utilizado em instituições com padrões rígidos e ambientes complexos (várias plataformas e sistemas diferentes). No dia-a-dia, não vejo motivos concretos para não usar JSON e REST. A Maioria das plataformas e linguagens modernas suportam esses conceitos e a solução final é muito mais simples do que o equivalente em SOAP.
+
+2.3. Ao utilizarmos o protocolo SOAP, faz-se necessário o uso de um mecanismo para que possamos ter algo bem descrito, detalhado e bem documentado, o que chamamos de contrato. O que é utilizado, quais as suas principais características? 
+
+WSDL é um a descrição em formato XML de um Web Service que utilizará SOAP / RPC como protocolo. É o acrônimo de Web Services Description Language (Linguagem de Descrição de Serviços Web).
+
+2.4. Em relação ao mecanismo utilizado acima, o que pode ser utilizado como um contrato dentro de um conceito RestFull? 
+
+API Web
+
+2.5. Já utilizou alguma ferramenta para barramento de serviços? Se sim, quais? 
+
+WSO2 Integrator – ( Alguns não considera como ESB)
+
+2.6. Qual o conceito de API Management? 
+Gerenciamento de API é o processo de criação e publicação de interfaces de programação de aplicativos da Web, Definindo suas políticas de uso, controlando o acesso, alimentando a comunidade de assinantes, coletando e analisando estatísticas de uso e relatando desempenho.
+
+2.7. Já utilizou algum API Management? Se sim, quais?
+
+Sim do WSO2 API Management
+
+

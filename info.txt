@@ -1,0 +1,13 @@
+
+npm install angular-oauth2-oidc --save;
+npm i angular-oauth2-oidc-jwks --save;
+
+No arquivo app.module.ts
+//SSO
+ imports: [
+ ...
+    HttpClientModule,
+    OAuthModule.forRoot(),
+	]
+	
+	https://app-sso-keycloak.herokuapp.com/auth/realms/clientes/protocol/openid-connect/logout?client_id=gerador&redirect_uri=http://localhost:4200/sso
