@@ -22,40 +22,49 @@ public class PessoaResource {
 	private Servico servico;
 
 	@GetMapping("/listar")
-	public ResponseEntity<Page<Pessoa>>  listar(int pagina, int tamanho) {
+	public ResponseEntity<Page<Pessoa>> listar(int pagina, int tamanho) {
 		tamanho = getTamanhoMinimo(tamanho);
 		Page<Pessoa> lista = servico.listar(PageRequest.of(pagina, tamanho));
-		
-		 return new ResponseEntity<Page<Pessoa>>(
-		          lista, 
-		          HttpStatus.BAD_REQUEST);
+
+		return new ResponseEntity<Page<Pessoa>>(lista, HttpStatus.OK);
 	}
 
 	@GetMapping("/buscarPorId/{id}")
-	public Pessoa buscarPorId(@PathVariable("id") Long id) {
-		return servico.buscarPorId(id);
+	public ResponseEntity<Pessoa> buscarPorId(@PathVariable("id") Long id) {
+
+		return new ResponseEntity<Pessoa>(servico.buscarPorId(id), HttpStatus.OK);
+
 	}
 
 	@GetMapping("/buscarPorCPF/{cpf}")
-	public Pessoa buscarPorId(@PathVariable("cpf") String cpf) {
-		return servico.buscarPorCPF(cpf);
+	public ResponseEntity<Pessoa> buscarPorId(@PathVariable("cpf") String cpf) {
+		return new ResponseEntity<Pessoa>(servico.buscarPorCPF(cpf), HttpStatus.OK);
+
 	}
 
 	@GetMapping("/pesquisar")
-	public Page<Pessoa> pesquisar(String nome, int pagina, int tamanho) {
+	public ResponseEntity<Page<Pessoa>> pesquisar(String nome, int pagina, int tamanho) {
 		tamanho = getTamanhoMinimo(tamanho);
-		return servico.pesquisarPorNome(nome, PageRequest.of(pagina, tamanho));
+
+		Page<Pessoa> lista = servico.pesquisarPorNome(nome, PageRequest.of(pagina, tamanho));
+
+		return new ResponseEntity<Page<Pessoa>>(lista, HttpStatus.OK);
+
 	}
 
 	@PutMapping("/atualizar")
-	public Pessoa atualizar(Pessoa pessoa) {
-		return servico.salvarOuAtualizar(pessoa);
+	public ResponseEntity<Pessoa> atualizar(Pessoa pessoa) {
+		Pessoa pessoaAtualizada = servico.salvarOuAtualizar(pessoa);
+		return new ResponseEntity<Pessoa>(pessoaAtualizada, HttpStatus.OK);
 
 	}
 
 	@PostMapping("/salvar")
-	public Pessoa salvar(Pessoa pessoa) {
-		return servico.salvarOuAtualizar(pessoa);
+	public ResponseEntity<Pessoa> salvar(Pessoa pessoa) {
+
+		Pessoa pessoaSalva = servico.salvarOuAtualizar(pessoa);
+		return new ResponseEntity<Pessoa>(pessoaSalva, HttpStatus.OK);
+
 	}
 
 	private int getTamanhoMinimo(int tamanho) {
