@@ -9,48 +9,60 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
-	
+
 	@Id
-	@SequenceGenerator(name="pk_sequence",sequenceName="pessoa_id_seq", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
-	@Column(name="id", unique=true, nullable=false)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "pessoa_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
+	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
+
+	@Column(nullable = false, length = 80)
+	@NotBlank(message = "Nome é obrigatório")
 	private String nome;
+
+	@Column(nullable = false, length = 11)
+	@NotBlank(message = "cpf é obrigatório")
 	private String cpf;
-	private LocalDateTime dtNascimento;
+
+	@Column(nullable = false, unique = true)
+	@NotBlank(message = "Data de nascimento é obrigatório")
+	private LocalDateTime dataNascimento;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getCpf() {
 		return cpf;
 	}
+
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public LocalDateTime getDtNascimento() {
-		return dtNascimento;
+
+	public LocalDateTime getDataNascimento() {
+		return dataNascimento;
 	}
-	public void setDtNascimento(LocalDateTime dtNascimento) {
-		this.dtNascimento = dtNascimento;
+
+	public void setDataNascimento(LocalDateTime dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }
