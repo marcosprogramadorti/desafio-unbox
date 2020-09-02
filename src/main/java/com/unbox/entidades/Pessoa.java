@@ -1,6 +1,6 @@
 package com.unbox.entidades;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,8 +30,7 @@ public class Pessoa {
 	private String cpf;
 
 	@Column(nullable = false, unique = true)
-	@NotBlank(message = "Data de nascimento é obrigatório")
-	private LocalDateTime dataNascimento;
+	private Date dataNascimento;
 
 	public Long getId() {
 		return id;
@@ -57,12 +56,14 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public LocalDateTime getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDateTime dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+
+	
 
 }

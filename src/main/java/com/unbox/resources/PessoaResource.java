@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -64,6 +65,11 @@ public class PessoaResource {
 		final Pessoa pessoaSalva = servico.salvarOuAtualizar(pessoa);
 		return new ResponseEntity<Pessoa>(pessoaSalva, HttpStatus.OK);
 
+	}
+	@DeleteMapping("/deletar")
+	public ResponseEntity<Void> ExcluirPorId(final Long id) {
+		servico.excluirPessoaPorId(id);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
 	private int getTamanhoMinimo(int tamanho) {
