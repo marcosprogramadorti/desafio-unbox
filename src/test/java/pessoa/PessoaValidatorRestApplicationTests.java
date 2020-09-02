@@ -38,16 +38,16 @@ public class PessoaValidatorRestApplicationTests {
     
     @Test
     void case1Salvar() throws Exception {
-    	//LocalDateTime dtNascimento = LocalDateTime.of(2020, 2, 9,0,0);
-    	String nascimento = "January 1, 1978";
-    	DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-    	Date date = format.parse(nascimento);
+    	
+    	
+    	Date date = new Date();
     	Pessoa p = new Pessoa();
     	p.setCpf("79414314083");
     	p.setDataNascimento(date);
     	p.setNome("Marcos Ferreira");
+    	p.setId(new Long(111));
     	
-    	mockMvc.perform(post("http://localhost:8080/unbox/salvar")
+    	mockMvc.perform(post("/unbox/pessoa")
     	        .contentType("application/json")
     	        .content(objectMapper.writeValueAsString(p)))
     	        .andExpect(status().isOk());

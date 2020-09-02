@@ -9,17 +9,19 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
-	
+
 	private static final String ERRO_AO_GRAVAR_DADOS_DE_PESSOA = "Erro ao gravar dados de pessoa.";
 
 	@Override
 	protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers,
 			HttpStatus status, WebRequest request) {
-		
-		//ApiError erro = new ApiError(status, ERRO_AO_GRAVAR_DADOS_DE_PESSOA, ex.getMessage());
-		ApiErrorUnbox apiErrorUnbox = new ApiErrorUnbox(); 
-		apiErrorUnbox.setMensagem(ERRO_AO_GRAVAR_DADOS_DE_PESSOA);
-		return super.handleExceptionInternal(ex,apiErrorUnbox, headers, status, request);
+
+		ApiErrorUnbox apiErrorUnbox = new ApiErrorUnbox();
+		if (status.isError()) {
+			apiErrorUnbox.setMensagem(ERRO_AO_GRAVAR_DADOS_DE_PESSOA);
+			return super.handleExceptionInternal(ex, apiErrorUnbox, headers, status, request);
+		}
+		return super.handleExceptionInternal(ex, body, headers, status, request);
 	}
 
 }
